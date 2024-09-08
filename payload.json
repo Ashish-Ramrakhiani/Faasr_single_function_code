@@ -1,7 +1,7 @@
 {
     "DataStores": {
         "My_Minio_Bucket": {
-            "Endpoint": "https://play.min.io",
+            "Endpoint": "http://play.min.io",
             "Bucket": "faasr",
             "Writable": "TRUE"
         }
@@ -22,11 +22,23 @@
                 "folder": "myexample",
                 "output1": "sample1.csv",
                 "output2": "sample2.csv"
+            },
+            "InvokeNext": "Sum"
+        },
+        "Sum": {
+            "FunctionName": "compute_sum",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "folder": "myexample",
+                "input1": "sample1.csv",
+                "input2": "sample2.csv",
+                "output": "sum.csv"
             }
         }
     },
     "FunctionGitRepo": {
-        "create_sample_data": "Ashish-Ramrakhiani/Faasr_single_function_code"
+        "create_sample_data": "Ashish-Ramrakhiani/Faasr_single_function_code",
+        "compute_sum": "Ashish-Ramrakhiani/Faasr_single_function_code"
     },
     "FunctionInvoke": "Action1",
     "FaaSrLog": "FaaSrLog",
